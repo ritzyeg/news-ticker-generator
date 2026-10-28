@@ -29,7 +29,32 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn-clear").addEventListener("click", () => {
         rawInput.value = "";
     });
+    // Live Input Word & Character Counter
+const wordCountSpan = document.getElementById("input-word-count");
+const charCountSpan = document.getElementById("input-char-count");
 
+function updateInputStats() {
+    const val = rawInput.value;
+    const words = val.trim() ? val.trim().split(/\s+/).filter(Boolean).length : 0;
+    const chars = val.length;
+
+    if (wordCountSpan) wordCountSpan.textContent = words;
+    if (charCountSpan) charCountSpan.textContent = chars;
+}
+
+// ടൈപ്പ് ചെയ്യുമ്പോഴും പേസ്റ്റ് ചെയ്യുമ്പോഴും തത്സമയം കൗണ്ട് മാറും
+rawInput.addEventListener("input", updateInputStats);
+
+// സാമ്പിൾ ലോഡ് ചെയ്യുമ്പോഴോ ക്ലിയർ ചെയ്യുമ്പോഴോ കൗണ്ട് അപ്ഡേറ്റ് ചെയ്യാൻ:
+document.getElementById("btn-load-manorama").addEventListener("click", () => {
+    rawInput.value = `${MANORAMA_SAMPLE_1}\n\n---\n\n${MANORAMA_SAMPLE_2}`;
+    updateInputStats();
+});
+
+document.getElementById("btn-clear").addEventListener("click", () => {
+    rawInput.value = "";
+    updateInputStats();
+});
     // 3. Generate Tickers
     document.getElementById("btn-generate").addEventListener("click", async () => {
         const text = rawInput.value.trim();
