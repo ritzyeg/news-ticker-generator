@@ -6,11 +6,8 @@ A resilient, hybrid broadcast news ticker engine designed for television newsroo
 
 The system operates on a dual-engine architecture prioritizing zero downtime, operational resilience, and factual fidelity:
 
-1. **AI Generation Engine (Google Gemini 1.5 Flash):**
-   - Implements closed-domain zero-shot prompt engineering.
-   - Grounded strictly on source dispatch text to eliminate hallucination, external speculation, or fabrication of unverified figures.
-   - Multi-layer guardrails enforce hard broadcast constraints ($\le 10$ words, clean typography without quotes or automated labels).
-2. **Deterministic Extractive Fallback Engine (Offline Mode):**
+
+1. **Deterministic Extractive Fallback Engine (Offline Mode):**
    - Activates automatically when running offline, without an API key, or during network disruptions.
    - Strips internal wire editorial guidance (e.g., regex/prefix matching on reporter desk instructions like `ഡെസ്കിൽ പരിശോധിക്കേണ്ടത്`).
    - Extracts and bounds root headlines to $\le 10$ words deterministically.
