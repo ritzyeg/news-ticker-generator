@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsTicker Studio | Manorama Editorial Desk</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="logo-area">
+            <span class="live-dot"></span>
+            <h1>NEWS TICKER <span>STUDIO</span></h1>
+            <p class="tagline">Broadcast Editorial Playout & Fidelity Verification</p>
+        </div>
+        <div class="header-actions">
+            <button id="btn-load-manorama" class="btn btn-secondary">⚡ മനോരമ ടെസ്റ്റ് കേസുകൾ ലോഡ് ചെയ്യുക</button>
+            <button id="btn-export-json" class="btn btn-primary">JSON ഡൗൺലോഡ്</button>
+            <button id="btn-export-csv" class="btn btn-primary">CSV ഡൗൺലോഡ്</button>
+        </div>
+    </header>
+
+    <!-- TV Broadcast Ticker Live Simulator Ribbon -->
+    <div class="tv-ticker-bar">
+        <div class="ticker-badge">LIVE FLASH</div>
+        <div class="ticker-marquee-wrapper">
+            <div id="marquee-content" class="ticker-marquee">
+                റിവ്യൂ ചെയ്ത് അപ്രൂവ് ചെയ്ത വാർത്തകൾ ഇവിടെ ലൈവായി സ്ക്രോൾ ചെയ്യും...
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="main-layout">
+        
+        <!-- Left: News Ingestion Desk -->
+        <section class="card desk-panel">
+            <h2>📥 വാർത്തകൾ നൽകുക (Ingest Raw Dispatches)</h2>
+            <p class="section-desc">ഒറ്റ വാർത്തയായോ ഒന്നിലധികം വാർത്തകളോ ഇവിടെ നൽകാം (വേർതിരിക്കാൻ <code>---</code> ഉപയോഗിക്കുക):</p>
+            
+            <div class="lang-selector">
+                <label><input type="radio" name="lang" value="ml" checked> മലയാളം (Malayalam)</label>
+                <label><input type="radio" name="lang" value="en"> English</label>
+            </div>
+
+            <textarea id="raw-news-input" rows="14" placeholder="വാർത്താ കുറിപ്പുകൾ ഇവിടെ പേസ്റ്റ് ചെയ്യുക..."></textarea>
+            
+            <div class="desk-controls">
+                <button id="btn-generate" class="btn btn-accent">⚡ ടിക്കറുകൾ ജനറേറ്റ് ചെയ്യുക (Generate Tickers)</button>
+                <button id="btn-clear" class="btn btn-outline">മായ്ക്കുക</button>
+            </div>
+        </section>
+
+        <!-- Right: Editorial Review & Rundown Workbench -->
+        <section class="card review-panel">
+            <div class="review-header">
+                <h2>📝 എഡിറ്റോറിയൽ റിവ്യൂ & റൺഡൗൺ (Rundown)</h2>
+                <div class="stats-counter" id="approved-count">Approved: 0</div>
+            </div>
+            <p class="section-desc">ഓരോ ടിക്കറും പരിശോധിക്കുക. <strong>10 വാക്കുകളിൽ കൂടരുത്.</strong> ആവശ്യമെങ്കിൽ എഡിറ്റ് ചെയ്യാം.</p>
+
+            <div id="rundown-list" class="rundown-items">
+                <div class="empty-state">വാർത്തകൾ ജനറേറ്റ് ചെയ്ത ശേഷം ഇവിടെ കാണാം.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
